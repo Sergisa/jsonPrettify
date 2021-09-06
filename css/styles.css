@@ -1,0 +1,299 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+ margin:0;
+ padding:0;
+ border:0;
+ font-size:100%;
+ font:inherit;
+ vertical-align:baseline
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+ display:block
+}
+body {
+ line-height:1
+}
+ol,
+ul {
+ list-style:none
+}
+blockquote,
+q {
+ quotes:none
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+ content:'';
+ content:none
+}
+table {
+ border-collapse:collapse;
+ border-spacing:0
+}
+html {
+ box-sizing:border-box
+}
+*,
+*:before,
+*:after {
+ box-sizing:inherit
+}
+.clear_parent {
+ overflow:hidden
+}
+.clear {
+ clear:both
+}
+.float-left {
+ float:left
+}
+.no_whitespace {
+ font-size:0
+}
+.unselectable {
+ -webkit-touch-callout:none;
+ -webkit-user-select:none;
+ -khtml-user-select:none;
+ -moz-user-select:none;
+ -ms-user-select:none;
+ user-select:none
+}
+.hyphenate {
+ overflow-wrap:break-word;
+ word-wrap:break-word;
+ -webkit-hyphens:auto;
+ -ms-hyphens:auto;
+ -moz-hyphens:auto;
+ hyphens:auto
+}
+.pixelated {
+ image-rendering:optimizeSpeed;
+ image-rendering:-moz-crisp-edges;
+ image-rendering:-o-crisp-edges;
+ image-rendering:-webkit-optimize-contrast;
+ image-rendering:-webkit-crisp-edges;
+ image-rendering:pixelated;
+ image-rendering:optimize-contrast;
+ -ms-interpolation-mode:nearest-neighbor
+}
+html,
+body {
+ height:100%
+}
+body {
+ overflow:hidden
+}
+textarea.json_field {
+ resize:none;
+ overflow:auto;
+ height:100%;
+ width:100%;
+ white-space:pre;
+ word-break:normal;
+ line-height:normal;
+ padding:16px;
+ padding-top:48px;
+ padding-bottom:24px;
+ margin:0;
+ border:0;
+ outline:0;
+ font-family:Consolas,Monaco,'Andale Mono',Courier,monospace;
+ font-size:12px;
+ background:#2b2b2b;
+ color:#fffedc;
+ text-shadow:0 1px #131313
+}
+.footer {
+ height:26px;
+ margin-top:-26px;
+ text-align:center;
+ padding:2px
+}
+.footer p,
+.footer a {
+ font-family:Consolas,Monaco,'Andale Mono',Courier,monospace;
+ font-size:12px;
+ text-shadow:0 1px #131313;
+ color:#3f3f3f
+}
+.footer a {
+ text-decoration:underline
+}
+.toolbar {
+ position:fixed;
+ top:0;
+ left:0;
+ right:0;
+ padding:6px 0;
+ display:table;
+ width:100%;
+ background:#2b2b2b;
+ border-bottom:1px solid #4a4a4a
+}
+.toolbar a,
+.toolbar label {
+ text-shadow:0 -1px black;
+ padding:4px 7px;
+ font-family:Consolas,Monaco,'Andale Mono',Courier,monospace;
+ font-size:12px;
+ color:#c0bfa3;
+ text-shadow:0 1px #131313
+}
+.toolbar a {
+ text-decoration:none;
+ border-radius:30px;
+ border:1px solid #4a4a4a
+}
+.toolbar a:hover {
+ background:#3b3b3b
+}
+.toolbar a.smily {
+ border:0;
+ font-weight:bold
+}
+.toolbar .switch_cell {
+ display:table-cell;
+ width:auto;
+ text-align:center;
+ vertical-align:middle;
+ white-space:nowrap;
+ padding:0 8px
+}
+.toolbar .switch_cell.switch_cell_right {
+ padding-left:0
+}
+.toolbar .slider_cell {
+ display:table-cell;
+ width:100%;
+ padding:0 6px;
+ vertical-align:middle
+}
+.toolbar .switchery {
+ height:22px
+}
+.toolbar .switchery small {
+ height:22px;
+ width:22px
+}
+.toolbar #slider {
+ height:14px;
+ border-radius:8px;
+ border:0
+}
+.toolbar #slider .noUi-connect {
+ border-radius:8px;
+ background:#5ddbea;
+ border:0
+}
+.toolbar #slider .noUi-handle {
+ width:22px;
+ height:22px;
+ left:-11px;
+ top:-4px;
+ border-radius:20px;
+ border:0;
+ box-shadow:0 1px 3px rgba(0,0,0,0.4)
+}
+.toolbar #slider .noUi-handle:before,
+.toolbar #slider .noUi-handle:after {
+ content:none
+}
+.toolbar #slider .noUi-pips-horizontal {
+ height:6px;
+ padding:2px 0
+}
+.toolbar #slider .noUi-marker:first-child,
+.toolbar #slider .noUi-marker:last-child {
+ visibility:hidden
+}

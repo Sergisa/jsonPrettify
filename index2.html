@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <title>json prettify</title>
+    <meta name="description" content="json prettify">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Thanks to github.com/abpetkov/switchery :) -->
+    <!-- Thanks to refreshless.com/nouislider/slider-options :) -->
+
+    <link rel="stylesheet" type="text/css" href="css/nouislider.min.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/switchery.min.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+
+</head>
+<body>
+
+<textarea
+        id="json_field" class="json_field"
+        style="color:#C0BFA3;"
+        onpaste="pasted();"
+        onfocus="focused();"
+        oninput="changed();"
+        onselectionchange="changed"
+        onpropertychange="changed();"
+        onkeydown="return keydown(event);"
+        autocomplete="off" spellcheck="false" wrap="off"></textarea>
+
+<div class="footer">
+    <p class="copyright">© 2019 <a href="http://chrismeub.com/tools.html" target="_blank">Chris Meub</a>.</p>
+</div>
+
+<div class="toolbar">
+    <div class="switch_cell">
+        <label>1tbs</label>
+        <input type="checkbox" id="switch_brace" onchange="brace_changed();"/>
+    </div>
+    <div class="switch_cell">
+        <a href="#" onclick="return makePretty();">prettify</a>
+    </div>
+    <div class="switch_cell">
+        <a href="#" onclick="return makeMin();">minify</a>
+    </div>
+    <div class="switch_cell switch_cell_right">
+        <a href="#" onclick="return save_json();">download</a>
+    </div>
+</div>
+<script src="js/vkbeautify.min.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/switchery.min.js"></script>
+<script src="js/filesaver.min.js"></script>
+<script src="js/cssFormatter.js"></script>
+
+</body>
+</html>
