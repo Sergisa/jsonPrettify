@@ -6,6 +6,7 @@ var maximum_depth = 20;
 var collapse_depth = slider_max;
 var egyptian = false;
 var touched = false;
+
 function push() {
     indent += indent_str;
 }
