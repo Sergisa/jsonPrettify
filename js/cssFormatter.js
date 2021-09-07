@@ -11,51 +11,6 @@ function push() {
     indent += indent_str;
 }
 
-function pop() {
-    indent = indent.substr(0, indent.length - indent_str.length);
-}
-
-function emit_line(a, b) {
-    json += (b ? ' ' : (json ? '\n' : '') + indent) + a;
-}
-
-function emit_comma() {
-    json += ',';
-}
-
-function emit_colon() {
-    json += ':';
-}
-
-function emit_jso(a, b, c) {
-    if (c >= collapse_depth) emit_line(JSON.stringify(a), b);
-    else if (_.isArray(a)) {
-        if (a.length == 0) return emit_line('[]', b);
-        emit_line('[', egyptian && b);
-        push();
-        for (var d = 0; d < a.length; ++d) {
-            d && emit_comma();
-            emit_jso(a[d], false, c + 1);
-        }
-        pop();
-        emit_line(']', false);
-    } else if (_.isObject(a)) {
-        if (_.isEmpty(a)) return emit_line('{}', b);
-        emit_line('{', egyptian && b);
-        push();
-        var d = 0;
-        for (key in a) {
-            if (!a.hasOwnProperty(key)) continue;
-            d && emit_comma();
-            emit_line(JSON.stringify(key), false);
-            emit_colon();
-            emit_jso(a[key], true, c + 1);
-            d++;
-        }
-        pop();
-        emit_line('}', false);
-    } else emit_line(JSON.stringify(a), b);
-}
 
 function find_depth(a, b) {
     b = (b || 0) + 1;
@@ -76,99 +31,50 @@ function update_maximim_depth(a) {
 }
 
 
-function format_json(a) {
-    try {
-        indent = json = '';
-        emit_jso(a, false, 0);
-        return json;
-    } catch (b) {
-        console && console.log && console.log(b.toString());
-    }
-}
-
 function parse_json(a) {
     return eval('(' + a + ')');
 }
 
 function makePretty() {
-    field.value = minify(field.value);
-    valid();
-}
-
-function makeMin() {
     field.value = beautify(field.value);
     valid();
 }
 
-function minify(css) {
-    var txt0;
-    try {
-        //txt0.value = vkbeautify.cssmin(txt0.value, true);
-        txt0 = vkbeautify.cssmin(css);
-    } catch (e) {
+function makeMin() {
+    field.value = minify(field.value);
+    valid();
+}
 
+function minify(css) {
+    try {
+        return vkbeautify.cssmin(css.trim(), true);
+    } catch (e) {
     }
-    return txt0;
 }
 
 function beautify(css, spaces) {
-    var txt0;
     try {
-        txt0 = vkbeautify.css(css, 1);
-        //txt0 = vkbeautify.css(vkbeautify.cssmin(css, true), spaces);
+        return vkbeautify.css(css.trim(), 4);
     } catch (e) {
     }
-    return txt0;
 }
 
-function format_field() {
-    try {
-        valid();
-        field.value = format_json(parse_json(field.value));
-    } catch (a) {
-        invalid();
-        console.log(a.toString());
-    }
-}
-
-function max_depth() {
-    if ((0 | slider.get()) === 0) format_field();
-    else //slider.set(0);
-    return false;
-}
-
-function min_depth() {
-    if ((0 | slider.get()) === slider_max) format_field();
-    else //slider.set(slider_max);
-    return false;
-}
-
-function add_depth(a) {
-    collapse_depth += a;
-    format_field();
-    return false;
-}
 
 function brace_changed() {
     egyptian = switch_brace.checked;
-    format_field();
-}
-
-function slider_changed() {
-    var a = 1 - _.clamp(slider.get() / slider_max, 0, 1);
-    a = 0 | Math.round(a * maximum_depth);
-    a = _.clamp(a, 0, maximum_depth);
-    if (collapse_depth != a) {
-        collapse_depth = a;
-        format_field();
+    if (switch_brace.checked) {
+        field.value = field.value.replaceAll("{", "\r\n{");
+    } else {
+        field.value = field.value.replaceAll("\n{", "{");
     }
+    //format_field();
 }
 
 function save_json() {
     var a = new Blob([field.value], {
         type: 'text/plain;charset=utf-8'
     });
-    saveAs(a, 'pretty.json');
+    saveAs(a, 'style.css');
     return false;
 }
 
@@ -196,10 +102,10 @@ function changed() {
     cached_value = field.value;
     try {
         var a = parse_json(cached_value);
-        valid();
+        //valid();
         update_maximim_depth(a);
     } catch (b) {
-        invalid();
+        //invalid();
     }
 }
 
@@ -208,12 +114,12 @@ function pasted() {
         //slider.set(0);
         //format_field();
         //field.value = beautify(field.value);
-        //valid();
+        valid();
     }, 0);
 }
 
 function keydown(a) {
-    if ((a.keyCode || a.which) !== 9) return;
+    if ((a.keyCode || a.button) !== 9) return;
     var b = field.selectionStart;
     var c = field.selectionEnd;
     field.value = field.value.substring(0, b) + indent_str + field.value.substring(c);
@@ -228,13 +134,7 @@ var switch_brace = document.getElementById('switch_brace');
 var switchery = new Switchery(switch_brace, {
     color: '#5DDBEA'
 });
-var placeholder = format_json({
-    'json-prettify': {
-        'instructions': [
-            'Click anywhere and Paste some JSON...'
-        ]
-    }
-});
 var field = document.getElementById('json_field');
-field.value = placeholder;
+//field.value = placeholder;
 changed();
+//valid()

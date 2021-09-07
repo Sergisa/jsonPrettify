@@ -161,10 +161,8 @@ html {
  image-rendering:optimizeSpeed;
  image-rendering:-moz-crisp-edges;
  image-rendering:-o-crisp-edges;
- image-rendering:-webkit-optimize-contrast;
  image-rendering:-webkit-crisp-edges;
  image-rendering:pixelated;
- image-rendering:optimize-contrast;
  -ms-interpolation-mode:nearest-neighbor
 }
 html,
@@ -216,7 +214,9 @@ textarea.json_field {
  left:0;
  right:0;
  padding:6px 0;
- display:table;
+ display:inline-flex;
+ justify-content: space-evenly;
+ align-items: center;
  width:100%;
  background:#2b2b2b;
  border-bottom:1px solid #4a4a4a
