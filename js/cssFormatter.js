@@ -35,7 +35,8 @@ function parse_json(a) {
 }
 
 function makePretty() {
-    field.value = beautify(field.value);
+    field.value = beautify(field.value, 4);
+    //field.value = field.value.replaceAll(/(.+):/g, "$1 : ");
     valid();
 }
 
@@ -46,15 +47,17 @@ function makeMin() {
 
 function minify(css) {
     try {
-        return vkbeautify.cssmin(css.trim(), true);
+        return vkbeautify.cssmin(css, true);
     } catch (e) {
+        console.error("unable to minify", e)
     }
 }
 
 function beautify(css, spaces) {
     try {
-        return vkbeautify.css(css.trim(), 4);
+        return vkbeautify.css(vkbeautify.cssmin(css, true), spaces);
     } catch (e) {
+        console.error("unable to prettify", e)
     }
 }
 
